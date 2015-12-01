@@ -1,0 +1,12 @@
+[Unit]
+Description=HTTP2 Nano container service
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill nano-container
+ExecStartPre=-/usr/bin/docker rm nano-container
+ExecStartPre=/usr/bin/docker pull jomoespe/nano-container
+ExecStart=/usr/bin/docker run --name nano-container -p 8443:8443 jomoespe/nano-container
+ExecStop=/usr/bin/docker stop nano-container
+
