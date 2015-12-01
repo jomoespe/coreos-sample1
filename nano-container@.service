@@ -10,3 +10,5 @@ ExecStartPre=/usr/bin/docker pull jomoespe/nano-container
 ExecStart=/usr/bin/docker run --name nano-container -p 8443:8443 jomoespe/nano-container
 ExecStop=/usr/bin/docker stop nano-container
 
+[X-Fleet]
+Conflicts=nano-container@*.service
