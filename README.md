@@ -119,3 +119,17 @@ Para arrancar diferentes instancias en diferentes nodos del cluster hay que nomb
 
 
 Se arrancarán tres instancias del servicio, cada una de las ellas en un nodo del cluster. Se podrá acceder a ellos por medio de la url **https://<node_public_ip>:8443/**
+
+
+
+## Notas
+
+Está pendiente ver como configurar el reverse proxy con load balancing, con NGinX.  
+
+  - [NGinX Load balancing](http://nginx.org/en/docs/http/load_balancing.html)
+  - [NGinX Reverse proxy](https://www.nginx.com/resources/admin-guide/reverse-proxy/)
+  - Arrancar el contenedor de NGinX (esto está funcionando con los servicios desplegados actualmente en DigitalOcean). Falta ver [como reconfigurarlos](https://www.digitalocean.com/community/tutorials/how-to-use-confd-and-etcd-to-dynamically-reconfigure-services-in-coreos):  
+
+    docker run --rm --name balancer -p 443:443 -p 80:80 -v /home/jmoreno/projects/lab/coreos/sample1:/etc/nginx:ro nginx
+
+
